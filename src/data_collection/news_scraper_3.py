@@ -18,6 +18,8 @@ def clean_filenames(title: str) -> str:
 def scrape_article(url):
   try:
     res = requests.get(url, timeout=10)
+    if (res.status_code!= 200):
+      print(f"❌ Skipping {url}: got {res.status_code}")
     res.raise_for_status
     soup = BeautifulSoup(res.content, "html.parser")
 
