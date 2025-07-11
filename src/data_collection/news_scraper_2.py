@@ -65,7 +65,7 @@ def main():
       with open(file_path, "w", encoding="utf-8") as f:
         json.dump(article, f, ensure_ascii=False, indent=2)
 
-    time.sleep(1)  # polite delay
+    time.sleep(1)
 
 if __name__ == "__main__":
     main()
