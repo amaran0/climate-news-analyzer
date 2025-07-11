@@ -1,0 +1,7 @@
+{
+  "url": "https://www.climate.gov/news-features/feed/what-are-finger-clouds-hurricane-inner-core-region-0",
+  "title": "What are the finger-like clouds in the hurricane inner-core region?",
+  "date": null,
+  "content": "A view down Hurricane Florence. Credit: NOAA\nThe inner core region of hurricanes harbors complex dynamical features, including small-scale clouds characterized by finger-like appearances pointing toward the hurricane eye. These features have been frequently observed in intense hurricanes. However, many basic aspects of these features remain unknown, particularly regarding what controls their occurrence, location, and spatial distribution. The authors conducted a numerical simulation with a very fine (about 100 m) horizontal grid spacing to investigate the nature of these features. Their results reveal a mechanism which explains several key characteristics of these features.\nThe GFDL System for High-resolution prediction on Earth-to-Local Domains (SHiELD), was used to conduct a multi-level nested simulation which has an innermost 125m resolution grid, focused on the hurricane inner core region. The simulation depicts the evolution of an idealized hurricane vortex over a 96-hour period. This is likely the first published effort to use ~100 m grid spacing to simulate the entire vortex intensification period.\nClick to read the full article",
+  "source": "climate.gov"
+}

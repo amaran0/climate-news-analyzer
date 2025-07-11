@@ -1,0 +1,7 @@
+{
+  "url": "https://www.climate.gov/news-features/feed/deep-learning-techniques-succeed-improving-enso-forecasting",
+  "title": "Deep learning techniques succeed in improving ENSO forecasting",
+  "date": null,
+  "content": "This sea surface temperature anomaly map (high temperatures in red, low temperatures in blue) shows a strong El Niño in 2016. Credit: NOAA\nThis sea surface temperature anomaly map (high temperatures in red, low temperatures in blue) shows a strong El Niño in 2016. Credit: NOAA\nA new paper supported with funding from the Climate Program Office’s Modeling, Analysis, Predictions, and Projections (MAPP) Program enhances the prediction accuracy of El Niño Southern Oscillation (ENSO) using deep learning techniques. Lead author Chibuike Ibebuchi, a postdoctoral researcher at Kent State University, works with MAPP-funded scientist Cameron Lee on a project aimed at monitoring hazardous temperature conditions in North America. The research, published in Climate Dynamics, demonstrates an innovative approach combining two artificial intelligence methods (Autoencoder neural networks and Long Short-Term Memory deep learning models) to predict a key ENSO indicator up to a year and a half in advance. The method proved capable of predicting extreme ENSO events at about 85% accuracy, which is a big deal for helping us prepare for extreme weather.\nClick to read the full article",
+  "source": "climate.gov"
+}

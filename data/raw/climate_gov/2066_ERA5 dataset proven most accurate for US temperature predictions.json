@@ -1,0 +1,7 @@
+{
+  "url": "https://www.climate.gov/news-features/feed/era5-dataset-proven-most-accurate-us-temperature-predictions",
+  "title": "ERA5 dataset proven most accurate for US temperature predictions",
+  "date": null,
+  "content": "The complex topography of the Western US might complicate weather prediction. Credit: USGS\nThe complex topography of the Western US might complicate weather prediction. Credit: USGS\nA recent study provides insight into how well climate reanalysis data matches real world observations, which is crucial for understanding the growing impact of climate change. Scientists produce reanalysis data sets by combining past weather observations from various sources with modern climate models to make a continuous record over time. The study, published in the Journal of Geophysical Research: Machine Learning and Computation, evaluated the accuracy of four major reanalysis data sets in representing daily and extreme temperature across the United States. The researchers found that all reanalysis data sets were least reliable in the mountainous western U.S., likely due to the complex terrain. The European Centre for Medium-Range Weather Forecasts’ Reanalysis dataset, version 5 (ERA5), was the most accurate data set overall. ERA5 was best at predicting both daily and extreme temperatures, making it a valuable tool for future climate research.\nClick to read the full article",
+  "source": "climate.gov"
+}

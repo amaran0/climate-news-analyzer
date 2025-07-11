@@ -1,0 +1,7 @@
+{
+  "url": "https://www.climate.gov/news-features/feed/ai-methods-enhance-rainfall-and-ocean-forecasting-climate-model",
+  "title": "AI methods enhance rainfall and ocean forecasting in climate model",
+  "date": null,
+  "content": "Artificial intelligence offers new ways to improve predictions of precipitation and sea level rise. Credit: NOAA\nArtificial intelligence is opening new doors to Earth system modeling, offering new ways to improve predictions of precipitation and regional scale sea level rise. Two recent studies funded by the Climate Program Office’s Climate Variability & Predictability (CVP) program demonstrate how AI can enhance our understanding of climate variability. One study in JGR Atmospheres applies two AI methods (Self-Organizing Maps and Empirical Orthogonal Functions) to track shifting rainfall patterns in South America, leading to better extreme weather predictions. The other Geophysical Research Letters study applies a deep learning technique to improve forecasts of sea level changes in the Pacific and Atlantic Oceans. Both studies show that AI can enhance our ability to understand and predict complex weather and ocean patterns by uncovering hidden connections in climate data.\nClick to read the full article",
+  "source": "climate.gov"
+}

@@ -1,0 +1,7 @@
+{
+  "url": "https://www.climate.gov/news-features/feed/enhancing-summer-madden-julian-oscillation-prediction-using-machine-learning",
+  "title": "Enhancing summer Madden-Julian Oscillation prediction using machine learning",
+  "date": null,
+  "content": "A storm at sea tosses waves. Credit: NOAA\nA storm at sea tosses waves. Credit: NOAA\nThe Madden-Julian Oscillation (MJO) is a climate pattern of fluctuating rainfall and winds that influences weather across the tropics. Its behavior is less predictable in summer than in winter, complicating vital forecasts for agriculture and climate preparedness. A new npj Climate and Atmospheric Science study applied machine learning (ML) and eXplainable Artificial Intelligence (XAI) to identify key controls on the summer MJO’s predictability, focusing on how precipitable water and surface temperature impacts the unique northeastward propagation pattern from the Indian Ocean. Researchers developed an ML-based prediction model that integrates long-term climate simulations with observational data, achieving skillful results over a 24-day forecast period. These findings enhance our understanding of summer MJO dynamics and illustrate the potential of ML to improve climate predictions, which is crucial for addressing the impacts of climate variability on agriculture and water management.\nClick to read the full article",
+  "source": "climate.gov"
+}
