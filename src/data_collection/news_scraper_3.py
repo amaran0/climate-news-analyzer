@@ -47,7 +47,7 @@ for i, url in enumerate(article_urls):
 
   article_data = scrape_article(url)
   if article_data:
-    filename = f"{i+2001:04d}_{clean_filenames(article_data['title'])}.json"
+    filename = f"{i+1:04d}_{clean_filenames(article_data['title'])}.json"
     file_path = output_dir + "/" + filename
 
     if os.path.exists(file_path):
