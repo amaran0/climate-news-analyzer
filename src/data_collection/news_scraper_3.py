@@ -21,11 +21,16 @@ def scrape_article(url):
     res.raise_for_status
     soup = BeautifulSoup(res.content, "html.parser")
 
-    title = soup.find("h1").text.strip() if soup.find("h1") else "untitled"
+    title_tag = soup.find("h1", class_="page_title")
+    title = title_tag.text.strip() if title_tag else "Untitled"
     date_tag = soup.find("time")
     date = date_tag.get("datetime") if date_tag and date_tag.has_attr("datetime") else None
-    paragraphs = soup.find_all("p")
-    content = "\n".join([p.text.strip() for p in paragraphs if p.text.strip()])
+    content_area = soup.find("div", class_="field-item")
+    if content_area:
+      paragraphs = content_area.findAll("p")
+      content = "\n".join(p.get_text(strip=True) for p in paragraphs)
+    else:
+      content = ""
 
     return {
       "url": url,
