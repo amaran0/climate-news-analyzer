@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import json
 import os,re,time
 
-output_dir = "data/raw"
+output_dir = "data/raw/insideclimatenews"
 
 url_1 = "https://insideclimatenews.org/post-sitemap.xml"
 resp_1 = requests.get(url_1)
