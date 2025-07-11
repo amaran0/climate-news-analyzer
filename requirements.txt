@@ -1,0 +1,25 @@
+# Fine-tuning
+torch>=2.0.0
+transformers>=4.40.0
+peft>=0.10.0
+
+# Retrieval-Augmented Generation (RAG)
+chromadb>=0.4.24
+sentence-transformers>=2.2.2  # for all-MiniLM-L6-v2
+langchain>=0.1.17
+
+# Web Scraping
+beautifulsoup4>=4.12.2
+requests>=2.31.0
+lxml>=4.9.3
+
+# Data Manipulation
+pandas>=2.2.0
+numpy>=1.25.0
+datasets>=2.14.0
+
+# Evaluation & Logging
+tqdm>=4.66.0
+loguru>=0.7.0
+scikit-learn>=1.4.0
+rouge-score>=0.1.2
