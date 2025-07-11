@@ -5,11 +5,11 @@ import os,re,time
 
 output_dir = "data/raw/insideclimatenews"
 
-url_1 = "https://insideclimatenews.org/post-sitemap.xml"
-resp_1 = requests.get(url_1)
-soup_1 = BeautifulSoup(resp_1.content, "xml")
+url = "https://insideclimatenews.org/post-sitemap.xml"
+resp = requests.get(url)
+soup_1 = BeautifulSoup(resp.content, "xml")
 
-article_urls_1 = [loc.text for loc in soup_1.find_all("loc")]
+article_urls = [loc.text for loc in soup_1.find_all("loc")]
 
 def clean_filenames(title: str) -> str:
   filename = re.sub(r'[<>:"/\\|?*]', "_", title)
@@ -37,12 +37,12 @@ def scrape_article(url):
     print(f"Error scraping {url}: {e}")
     return None
 
-for i, url in enumerate(article_urls_1):
+for i, url in enumerate(article_urls):
   if not url.startswith("http") or any(url.endswith(ext) for ext in [".jpg", ".jpeg", ".png", ".pdf", ".zip"]):
     print(f"Skipping non-article URL: {url}")
     continue
 
-  print(f"[{i+1}/{len(article_urls_1)}] Downloading: {url}")
+  print(f"[{i+1}/{len(article_urls)}] Downloading: {url}")
 
   article_data = scrape_article(url)
   if article_data:
