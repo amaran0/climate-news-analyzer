@@ -25,7 +25,7 @@ This LLM-powered system is designed to perform the following key functions:
 ## Dataset
 The model was trained and evaluated on a curated dataset of climate-related news articles and reports
 * **Sources:** climate.gov, insideclimatenews.com, noaa.org
-* **Size:** over 5,500 articles
+* **Size:** over 6,800 articles
 * **Curation:** The dataset underwent cleaning methods such as boilerplate removal, targetting specific content, filtering/minimum length check, normalization, and deduplication
 
 ## Model

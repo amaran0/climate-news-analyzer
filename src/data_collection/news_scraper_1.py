@@ -31,7 +31,8 @@ def scrape_article(url):
       "url": url,
       "title": title,
       "date": date,
-      "content": content
+      "content": content,
+      "source": "insideclimatenews.com"
     }
   except Exception as e:
     print(f"Error scraping {url}: {e}")

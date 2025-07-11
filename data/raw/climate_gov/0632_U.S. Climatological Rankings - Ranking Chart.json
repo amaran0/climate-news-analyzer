@@ -1,0 +1,7 @@
+{
+  "url": "https://www.climate.gov/maps-data/dataset/us-climatological-rankings-ranking-chart",
+  "title": "U.S. Climatological Rankings - Ranking Chart",
+  "date": null,
+  "content": "When you hear or see news that a region had its hottest or wettest month since records began, you can check the climatological record books yourself. Access this tool to see how conditions for various locations and time periods rank among the historical record.\nWeather stations across the country gather daily observational data such as the high and low temperature of the day and the amount of precipitation that fell. Results from across the country are compiled at the National Center for Environmental Information in Asheville, North Carolina. After quality control of the data (for instance, removing values that indicate an instrument is not working), monthly values are averaged across geographic areas (division, state, region, etc.). The averaged values are sorted from lowest to highest value for the entire period of record. The sorted list shows how each period compares to the full range of previous values.\nWhat can I do with these data?\nFind out how monthly observations of temperature or precipitation for a selected city or area compare to other months in the historical record since 1895.\nHow do I use the site?\nGo to https://www.ncdc.noaa.gov/cag/national/rankings.\nHelp us improve our content",
+  "source": ""
+}
