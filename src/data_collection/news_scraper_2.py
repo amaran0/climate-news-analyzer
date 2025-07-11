@@ -5,7 +5,7 @@ import os,re,time
 
 output_dir = "data/raw/climate_gov"
 
-url = "https://www.climate.gov/sitemap.xml?page=1"
+url = "https://www.climate.gov/sitemap.xml?page=2"
 resp = requests.get(url)
 soup_1 = BeautifulSoup(resp.content, "xml")
 
@@ -32,7 +32,7 @@ def scrape_article(url):
       "title": title,
       "date": date,
       "content": content,
-      "source": ""
+      "source": "climate.gov"
     }
   except Exception as e:
     print(f"Error scraping {url}: {e}")

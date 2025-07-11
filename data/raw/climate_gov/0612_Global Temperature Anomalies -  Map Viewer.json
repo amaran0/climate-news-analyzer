@@ -3,5 +3,5 @@
   "title": "Global Temperature Anomalies -  Map Viewer",
   "date": null,
   "content": "Interactive global land and ocean temperature anomalies maps, available at the NOAA Climate at a Glance website, provide valuable illustrative data. The anomalies are based on 1981-2010 mean.\nGlobal temperature anomaly data come from the Global Historical Climatology Network-Monthly (GHCN-M) data set and International Comprehensive Ocean-Atmosphere Data Set (ICOADS). A combined global land and ocean temperature anomaly dataset was created from these resources.\nWhat can I do with these maps?\nHow do I use the site?\nSelect Monthly or Annual and use the pull-down menus to select the desired timeframe.\nWithin the map, click on a 5° x 5° grid point to get more information about that location, including a Time Series.\nHelp us improve our content",
-  "source": ""
+  "source": "climate.gov"
 }

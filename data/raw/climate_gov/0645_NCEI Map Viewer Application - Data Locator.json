@@ -3,5 +3,5 @@
   "title": "NCEI Map Viewer Application - Data Locator",
   "date": null,
   "content": "NCEI's Map Viewer Application presents a map interface to help users find, preview, and download climate and weather data. Users can also access some data through an ordering system: users submit their order and receive a link to download the requested data via email. Data ordered through the system are usually (but not always) delivered within a few minutes.\nThe interface is somewhat complex as it is designed to display a variety of data types in the same viewing environment.\nNOAA's National Centers for Environmental Information collects and archives data for the United States and the entire glove from across NOAA and its partner networks. Data are collected at weather/climate stations, from radars, weather balloons, moored buoys in the ocean, ships, airplanes, satellites, and from computer models.\nHow do I use the map interface to find and download data of interest?\nFor a step-by-step example of using the GIS data locator to obtain data, check the How-To tab in the Dataset Gallery entry for Daily Summary Observations\nHelp us improve our content",
-  "source": ""
+  "source": "climate.gov"
 }

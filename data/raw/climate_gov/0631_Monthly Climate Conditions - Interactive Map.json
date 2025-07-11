@@ -3,5 +3,5 @@
   "title": "Monthly Climate Conditions - Interactive Map",
   "date": null,
   "content": "Generate maps showing data for each of the 344 climate divisions in the U.S. Climate Divisional Database. You can specify monthly or yearly values, ranks, or anomalies for temperature, precipitation, heating and cooling degree days, and drought indices.\nMeasurements come from weather stations in the Global Historical Climatology Network-Daily (GHCN-D).\nHow do I use the site?\nWhat can I do with these data?\nChoose various ways to display the map by clicking buttons just above it. Click...\nHelp us improve our content",
-  "source": ""
+  "source": "climate.gov"
 }

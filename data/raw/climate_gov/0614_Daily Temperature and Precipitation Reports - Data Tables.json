@@ -3,5 +3,5 @@
   "title": "Daily Temperature and Precipitation Reports - Data Tables",
   "date": null,
   "content": "Daily summaries answer questions such as\nDaily weather records come from automated and human-facilitated observation stations in the Global Historical Climatology Network-Daily database. Data from each station are reviewed regularly for quality and consistency: the data have been checked for obvious inaccuracies, but they have not been adjusted to account for the influences of historical changes in instrumentation or observing practices.\n1) Start at https://www.ncei.noaa.gov/maps/daily-summaries/\n2) In the first window, click Daily Summary Observations\n3) Set the DATE and TYPE of data you want.\n4) Choose WHERE you want it for.\nEnter a placename or zip code in the SEARCH FOR A LOCATION field. This will zoom the map to your region of interest.\n5) Preview and/or Download the data\n6) If you want to download a station's data in another format:\nCheck the box to the left of its name, and then click the Add to Cart button\nHelp us improve our content",
-  "source": ""
+  "source": "climate.gov"
 }

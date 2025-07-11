@@ -3,5 +3,5 @@
   "title": "Drought Risk Atlas - Maps and Station Data",
   "date": null,
   "content": "The Drought Risk Atlas provides historic data about drought for weather stations across the United States that have at least 40 years of records. Users can select a station and view data for several drought indices over time, frequency statistics for drought thresholds, drought period information, and index comparisons.\nThe Drought Risk Atlas uses precipitation records from the National Weather Service Cooperative data (COOP) that is archived by the Regional Climate Centers (RCC) in their Applied Climate Information System (ACIS).\nWhat can I do with these data?\nYou can explore drought history at thousands of stations across the contiguous U.S. Values for several drought indices are pre-computed, and data are available for download. Within the Map Viewer, you can view U.S. Drought Monitor or Standardized Precipitation Index maps\nHow do I use the U.S. Drought Atlas site?\nHelp us improve our content",
-  "source": ""
+  "source": "climate.gov"
 }
