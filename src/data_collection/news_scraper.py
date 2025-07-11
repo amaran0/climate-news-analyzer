@@ -19,7 +19,7 @@ def scrape_article(url):
   try:
     res = requests.get(url, timeout=10)
     res.raise_for_status
-    soup = BeautifulSoup(res.content, "html-parser")
+    soup = BeautifulSoup(res.content, "html.parser")
 
     title = soup.find("h1").text.strip() if soup.find("h1") else "untitled"
     date_tag = soup.find("time")
@@ -38,7 +38,12 @@ def scrape_article(url):
     return None
 
 for i, url in enumerate(article_urls_1):
+  if not url.startswith("http") or any(url.endswith(ext) for ext in [".jpg", ".jpeg", ".png", ".pdf", ".zip"]):
+    print(f"Skipping non-article URL: {url}")
+    continue
+
   print(f"[{i+1}/{len(article_urls_1)}] Downloading: {url}")
+  
   article_data = scrape_article(url)
   if article_data:
     filename = f"{i+1:04d}_{clean_filenames(article_data['title']).json}"
