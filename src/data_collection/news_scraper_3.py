@@ -11,7 +11,7 @@ resp = requests.get(url)
 root = ET.fromstring(resp.content)
 
 namespaces = {"ns": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-article_urls = [loc.text.strip() for loc in root.find_all(".//ns:loc", namespaces)]
+article_urls = [loc.text.strip() for loc in root.findall(".//ns:loc", namespaces)]
 
 def clean_filenames(title: str) -> str:
   filename = re.sub(r'[<>:"/\\|?*]', "_", title)
@@ -49,7 +49,7 @@ for i, url in enumerate(article_urls):
 
   article_data = scrape_article(url)
   if article_data:
-    filename = f"{i+2001:04d}_{clean_filenames(article_data['title'])}.json"
+    filename = f"{i+1:04d}_{clean_filenames(article_data['title'])}.json"
     file_path = output_dir + "/" + filename
 
     if os.path.exists(file_path):
