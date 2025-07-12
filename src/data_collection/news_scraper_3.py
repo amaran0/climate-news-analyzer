@@ -2,14 +2,16 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import os,re,time
+import xml.etree.ElementTree as ET
 
 output_dir = "data/raw/science_nasa_gov"
 
 url = "https://climate.nasa.gov/sitemaps/news_items_sitemap.xml"
 resp = requests.get(url)
-soup_1 = BeautifulSoup(resp.content, "xml")
+root = ET.fromstring(resp.content)
 
-article_urls = [loc.text for loc in soup_1.find_all("loc")]
+namespaces = {"ns": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+article_urls = [loc.text.strip() for loc in root.find_all(".//ns:loc", namespaces)]
 
 def clean_filenames(title: str) -> str:
   filename = re.sub(r'[<>:"/\\|?*]', "_", title)
@@ -39,7 +41,7 @@ def scrape_article(url):
     return None
 
 for i, url in enumerate(article_urls):
-  if not url.startswith("http") or any(url.endswith(ext) for ext in [".jpg", ".jpeg", ".png", ".pdf", ".zip"]):
+  if not url.startswith("https") or any(url.endswith(ext) for ext in [".jpg", ".jpeg", ".png", ".pdf", ".zip"]):
     print(f"Skipping non-article URL: {url}")
     continue
 
