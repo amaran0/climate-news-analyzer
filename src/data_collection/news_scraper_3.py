@@ -3,13 +3,10 @@ from bs4 import BeautifulSoup
 import json
 import os,re,time
 
-output_dir = "data/raw/noaa_gov"
-headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
-}
+output_dir = "data/raw/science_nasa_gov"
 
-url = "https://www.noaa.gov/sitemap.xml?page=1"
-resp = requests.get(url, headers=headers)
+url = "https://climate.nasa.gov/sitemaps/news_items_sitemap.xml"
+resp = requests.get(url)
 soup_1 = BeautifulSoup(resp.content, "xml")
 
 article_urls = [loc.text for loc in soup_1.find_all("loc")]
@@ -20,30 +17,22 @@ def clean_filenames(title: str) -> str:
 
 def scrape_article(url):
   try:
-    res = requests.get(url, timeout=10, headers=headers)
-    if (res.status_code!= 200):
-      print(f"❌ Skipping {url}: got {res.status_code}")
-      return None
+    res = requests.get(url, timeout=10)
     res.raise_for_status
     soup = BeautifulSoup(res.content, "html.parser")
 
-    title_tag = soup.find("div", property="og:title")
-    title = title_tag["content"].strip() if title_tag else soup.title.string.strip()
+    title = soup.find("h1").text.strip() if soup.find("h1") else "untitled"
     date_tag = soup.find("time")
     date = date_tag.get("datetime") if date_tag and date_tag.has_attr("datetime") else None
-    content_area = soup.find("div", class_="c-field__item")
-    if content_area:
-      paragraphs = content_area.findAll("p")
-      content = "\n".join(p.get_text(strip=True) for p in paragraphs)
-    else:
-      content = ""
+    paragraphs = soup.find_all("p")
+    content = "\n".join([p.text.strip() for p in paragraphs if p.text.strip()])
 
     return {
       "url": url,
       "title": title,
       "date": date,
       "content": content,
-      "source": "noaa.gov"
+      "source": "science.nasa.gov"
     }
   except Exception as e:
     print(f"Error scraping {url}: {e}")
@@ -58,7 +47,7 @@ for i, url in enumerate(article_urls):
 
   article_data = scrape_article(url)
   if article_data:
-    filename = f"{i+1:04d}_{clean_filenames(article_data['title'])}.json"
+    filename = f"{i+2001:04d}_{clean_filenames(article_data['title'])}.json"
     file_path = output_dir + "/" + filename
 
     if os.path.exists(file_path):
