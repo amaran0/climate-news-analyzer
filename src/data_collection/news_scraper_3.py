@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 
 output_dir = "data/raw/science_nasa_gov"
 
-url = "https://climate.nasa.gov/sitemaps/news_items_sitemap.xml"
+url = "https://climate.nasa.gov/sitemaps/content_pages_sitemap.xml"
 resp = requests.get(url)
 root = ET.fromstring(resp.content)
 
@@ -49,7 +49,7 @@ for i, url in enumerate(article_urls):
 
   article_data = scrape_article(url)
   if article_data:
-    filename = f"{i+1:04d}_{clean_filenames(article_data['title'])}.json"
+    filename = f"{i+1420:04d}_{clean_filenames(article_data['title'])}.json"
     file_path = output_dir + "/" + filename
 
     if os.path.exists(file_path):

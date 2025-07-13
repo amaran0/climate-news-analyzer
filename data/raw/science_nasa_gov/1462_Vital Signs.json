@@ -1,0 +1,7 @@
+{
+  "url": "https://climate.nasa.gov/vital-signs/sea-level/",
+  "title": "Vital Signs",
+  "date": null,
+  "content": "Global sea levels are rising as a result of human-caused global warming, with recent rates being unprecedented over the past 2,500-plus years.\nSea level rise is caused primarily by two factors related to global warming: the added water from melting ice sheets and glaciers, and the expansion of seawater as it warms. The first graph tracks the change in global sea level since 1993, as observed by satellites.\nThe second graph, which is from coastal tide gauge and satellite data, shows how much sea level changed from about 1900 to 2018. Items with pluses (+) are factors that cause global sea level to increase, while minuses (-) are what cause sea level to decrease. These items are displayed at the time they were affecting sea level.\nThe data shown are the latest available, with a four- to five-month delay needed for processing.\n* You now need to create an Earthdata account to access NASA’s sea level data. Register here for free. Once logged in, click the \"download data\" button on this page to access the data.\nLearn More\nNASA Sea Level Change",
+  "source": "science.nasa.gov"
+}

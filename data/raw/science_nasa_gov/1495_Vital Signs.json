@@ -1,0 +1,7 @@
+{
+  "url": "https://climate.nasa.gov/vital-signs/ice-sheets/",
+  "title": "Vital Signs",
+  "date": null,
+  "content": "Antarctica is losing ice mass (melting) at an average rate of about 136 billion tons per year, and Greenland is losing about 267 billion tons per year, adding to sea level rise.\nData from NASA's GRACE and GRACE Follow-On satellites show that the land ice sheets in both Antarctica (upper chart) and Greenland (lower chart) have been losing mass since 2002.\nThe GRACE mission ended in June 2017. The GRACE Follow-On mission began collecting data in June 2018 and is continuing to monitor both ice sheets. This record includes new data-processing methods and is continually updated as more numbers come in, with a delay of up to two months.\nThis is important because the ice sheets of Greenland and Antarctica store about two-thirds of all the fresh water on Earth. They are losing ice due to the ongoing warming of Earth’s surface and ocean. Meltwater coming from these ice sheets is responsible for about one-third of the global average rise in sea level since 1993.\nNote: You now need to create an Earthdata account to access NASA's ice sheet data. Register here for free. Once logged in, click \"HTTP\" under the charts on this page to access the data.\nGravity Recovery and Climate Experiment Follow-On (GRACE-FO)\nNASA's IceBridge\nIceSat-2",
+  "source": "science.nasa.gov"
+}
