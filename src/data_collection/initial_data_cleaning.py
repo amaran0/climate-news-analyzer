@@ -37,23 +37,26 @@ def clean_and_store_articles(input, output, min_len=300):
     if not os.path.isdir(source_path):
       continue
 
-    output_path = os.path.join(output, source)
+    all_cleaned_articles = []
+
     for file in os.listdir(source_path):
-      with open(os.path.join(source_path, file), "r", encoding="utf-8") as f:
+      file_path = os.path.join(source_path, file)
+      with open(file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-      cleaned_articles = []
+      if isinstance(data, dict):
+        data = [data]
+
       for article in data:
         content = clean_text(article.get("content", ""))
         if len(content) < min_len or content in seen_contents:
           continue
         seen_contents.add(content)
-
         article["content"] = content
-        cleaned_articles.append(article)
+        all_cleaned_articles.append(article)
 
-        if cleaned_articles:
-          with open(os.path.join(output_path, file), "w", encoding="utf-8") as out:
-            json.dump(cleaned_articles, out, indent=2, ensure_ascii=False)
+    output_file = os.path.join(output_dir, f"{source}.json")
+    with open(output_file, "w", encoding="utf-8") as out_f:
+      json.dump(all_cleaned_articles, out_f, indent=2, ensure_ascii=False)
 
 clean_and_store_articles(input_dir, output_dir)
