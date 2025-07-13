@@ -7,6 +7,7 @@ output_dir = Path("data/processed")
 def clean_text(text):
   text = html.unescape(text)
   text = text.replace("\\n", "\n").replace("\\", "").replace("  ", " ")
+  text = re.sub(r'\s+', ' ', text)
 
   boilerplate_patterns = [
     r"Subscribe to (our )?newsletter.*",
@@ -24,6 +25,16 @@ def clean_text(text):
   ]
   for pattern in boilerplate_patterns:
     text = re.sub(pattern, "", text, flags=re.IGNORECASE)
+
+  invisible_chars = [
+    '\u200B',
+    '\u200C',
+    '\u200D',
+    '\uFEFF',
+    '\u2060',
+  ]
+  for char in invisible_chars:
+    text = text.replace(char, "")
 
   text = re.sub(r"\n{2,}", "\n\n", text)
   text = text.strip()
