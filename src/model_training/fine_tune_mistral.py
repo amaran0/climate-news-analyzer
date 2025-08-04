@@ -2,11 +2,13 @@ import os
 from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments
 from peft import prepare_model_for_kbit_training, LoraConfig, get_peft_model
+from huggingface_hub import login
 
 #CONFIG
 MODEL_NAME = "mistralai/Mistral-7B-v0.1"
-DATA_PATH = "./src/final_dataset"
+DATA_PATH = "./src/final_dataset/gpt3.5_turbo_instruction_data.json"
 OUTPUT_DIR = "./src/mistral-qlora"
+login(token=os.getenv("HUGGINGFACE_TOKEN"))
 
 def format_example(example):
   if example["input"]:
