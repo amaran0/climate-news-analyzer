@@ -21,14 +21,14 @@ def load_articles():
         docs.append(Document(page_content=content))
   return docs
 
-print("😒Loading articles...")
+print("Loading articles...")
 docs = load_articles()
 
-print(f"👌Loaded {len(docs)} articles. Splitting into chunks...")
+print(f"Loaded {len(docs)} articles. Splitting into chunks...")
 splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=50)
 chunks = splitter.split_documents(docs)
 
-print("😍Embedding and storing in ChromaDB...")
+print("Embedding and storing in ChromaDB...")
 embedding_fn = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
 vectordb = Chroma.from_documents(chunks, embedding_fn, persist_directory=CHROMA_DIR)
 vectordb.persist()
