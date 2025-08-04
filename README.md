@@ -29,7 +29,7 @@ The model was trained and evaluated on a curated dataset of climate-related news
 * **Curation:** The dataset underwent cleaning methods such as boilerplate removal, targetting specific content, filtering/minimum length check, normalization, and deduplication
 
 ## Model
-I fine-tuned the open-source pre-trained Mistral 7b model for this project using QLoRA fine-tuning. But to do this, I first had to convert the cleaned data into intruction/input/output triplets. I did this by using GPT 3.5's API and running it through a series of possible summarization queries resulting in over 10,000 triplets ready for fine-tuning.
+I fine-tuned the open-source pre-trained Mistral 7b model for this project using QLoRA fine-tuning. But to do this, I first had to convert the cleaned data into intruction/input/output triplets. I did this by using GPT 3.5's API and running it through a series of possible summarization queries resulting in over 10,000 triplets ready for fine-tuning. To include RAG implementation, the article's content was embedded and stored in ChromaDB. I then went ahead with fine-tuning.
 
 ## Contact/About Me
 * **Your Name:** Arya Maran
