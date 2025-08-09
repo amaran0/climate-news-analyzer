@@ -7,7 +7,7 @@ from huggingface_hub import login
 #CONFIG
 MODEL_NAME = "mistralai/Mistral-7B-v0.1"
 DATA_PATH = "./src/final_dataset/gpt3.5_turbo_instruction_data.json"
-OUTPUT_DIR = "./src/mistral-qlora"
+OUTPUT_DIR = "/content/drive/MyDrive/mistral-qlora"
 login(token=os.getenv("HUGGINGFACE_TOKEN"))
 
 def format_example(example):
