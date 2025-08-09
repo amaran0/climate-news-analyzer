@@ -56,6 +56,7 @@ config = LoraConfig(
 )
 
 model = get_peft_model(model, config)
+model.config.use_cache = False
 
 print("👌Training!!!")
 args = TrainingArguments(
