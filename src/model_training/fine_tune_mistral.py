@@ -24,6 +24,7 @@ def tokenize(example, tokenizer):
     max_length=2048,
     padding="max_length"
   )
+  tokenized["labels"] = tokenized["input_ids"].copy()
   return tokenized
 
 print("🤞Loading dataset")
