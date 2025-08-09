@@ -45,7 +45,6 @@ model = AutoModelForCausalLM.from_pretrained(
 
 print("😊Preparing model for QLORA training")
 model = prepare_model_for_kbit_training(model)
-model.gradient_checkpointing_enable(use_reentrant=True)
 
 config = LoraConfig(
   r=64,
@@ -69,6 +68,7 @@ args = TrainingArguments(
   save_total_limit=2,
   fp16=False,
   bf16=True,
+  gradient_checkpointing=True,
   report_to="none"
 )
 
