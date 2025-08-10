@@ -82,7 +82,7 @@ trainer = Trainer(
   tokenizer=tokenizer
 )
 
-trainer.train(resume_from_checkpoint="/content/drive/MyDrive/mistral-qlora/checkpoint-1800")
+trainer.train(resume_from_checkpoint="/content/drive/MyDrive/mistral-qlora/checkpoint-2200")
 
 print(f"Saving QLORA weights to {OUTPUT_DIR}")
 model.save_pretrained(OUTPUT_DIR)
