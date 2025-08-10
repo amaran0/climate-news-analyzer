@@ -95,7 +95,7 @@ trainer = Trainer(
 
 )
 
-trainer.train(resume_from_checkpoint=False)
+trainer.train()
 
 print(f"Saving QLORA weights to {OUTPUT_DIR}")
 model.save_pretrained(OUTPUT_DIR)
