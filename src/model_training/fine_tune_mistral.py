@@ -25,6 +25,7 @@ def tokenize(example, tokenizer):
     padding="max_length"
   )
   tokenized["labels"] = tokenized["input_ids"].copy()
+  tokenized["labels"] = [ (tok if tok != tokenizer.pad_token_id else -100) for tok in tokenized["labels"] ]
   return tokenized
 
 print("🤞Loading dataset")
