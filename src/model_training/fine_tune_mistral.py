@@ -39,8 +39,8 @@ print("🪙Loading tokenizer")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
 tokenizer.pad_token = tokenizer.eos_token
 
-tokenized_train_dataset = train_dataset.map(lambda x: tokenize(x, tokenizer), batched=True)
-tokenized_eval_dataset = eval_dataset.map(lambda x: tokenize(x, tokenizer), batched=True)
+tokenized_train_dataset = train_dataset.map(lambda x: tokenize(x, tokenizer))
+tokenized_eval_dataset = eval_dataset.map(lambda x: tokenize(x, tokenizer))
 
 
 print("Loading base model")
