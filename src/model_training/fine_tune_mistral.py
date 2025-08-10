@@ -39,8 +39,8 @@ print("🪙Loading tokenizer")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
 tokenizer.pad_token = tokenizer.eos_token
 
-tokenized_train_dataset = train_dataset.map(lambda x: tokenize(x, tokenizer))
-tokenized_eval_dataset = eval_dataset.map(lambda x: tokenize(x, tokenizer))
+tokenized_train_dataset = train_dataset.map(lambda x: tokenize(x, tokenizer), batched=True)
+tokenized_eval_dataset = eval_dataset.map(lambda x: tokenize(x, tokenizer), batched=True)
 
 
 print("Loading base model")
@@ -74,14 +74,15 @@ args = TrainingArguments(
   num_train_epochs=3,
   logging_steps=10,
   save_steps=200,
-  evaluation_strategy="steps",
+  eval_strategy="steps",
   eval_steps=200,
   save_total_limit=2,
   fp16=False,
   bf16=True,
   gradient_checkpointing=True,
   report_to="none",
-  load_best_model_at_end=True
+  load_best_model_at_end=True,
+  metric_for_best_model="loss"
 )
 
 trainer = Trainer(
@@ -94,7 +95,7 @@ trainer = Trainer(
 
 )
 
-trainer.train(resume_from_checkpoint=True)
+trainer.train(resume_from_checkpoint=False)
 
 print(f"Saving QLORA weights to {OUTPUT_DIR}")
 model.save_pretrained(OUTPUT_DIR)
