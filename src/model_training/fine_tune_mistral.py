@@ -1,6 +1,6 @@
 import os
 from datasets import load_dataset
-from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments
+from transformers import AutoTokenizer, AutoModelForCausalLM, Trainer, TrainingArguments, EarlyStoppingCallback
 from peft import prepare_model_for_kbit_training, LoraConfig, get_peft_model
 from huggingface_hub import login
 
@@ -31,11 +31,17 @@ def tokenize(example, tokenizer):
 print("🤞Loading dataset")
 dataset = load_dataset("json", data_files=DATA_PATH, split="train")
 
+dataset_split = dataset.train_test_split(test_size=0.2, seed=42)
+train_dataset = dataset_split["train"]
+eval_dataset = dataset_split["test"]
+
 print("🪙Loading tokenizer")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
 tokenizer.pad_token = tokenizer.eos_token
 
-tokenized_dataset = dataset.map(lambda x: tokenize(x, tokenizer))
+tokenized_train_dataset = train_dataset.map(lambda x: tokenize(x, tokenizer))
+tokenized_eval_dataset = eval_dataset.map(lambda x: tokenize(x, tokenizer))
+
 
 print("Loading base model")
 model = AutoModelForCausalLM.from_pretrained(
@@ -68,18 +74,24 @@ args = TrainingArguments(
   num_train_epochs=3,
   logging_steps=10,
   save_steps=200,
+  evaluation_strategy="steps",
+  eval_steps=200,
   save_total_limit=2,
   fp16=False,
   bf16=True,
   gradient_checkpointing=True,
-  report_to="none"
+  report_to="none",
+  load_best_model_at_end=True
 )
 
 trainer = Trainer(
   model=model,
-  train_dataset=tokenized_dataset,
+  train_dataset=tokenized_train_dataset,
+  eval_dataset=tokenized_eval_dataset,
   args=args,
-  tokenizer=tokenizer
+  tokenizer=tokenizer,
+  callbacks=[EarlyStoppingCallback(early_stopping_patience=2)]
+
 )
 
 trainer.train(resume_from_checkpoint=True)
