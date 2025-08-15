@@ -30,10 +30,10 @@ The model was trained and evaluated on a curated dataset of climate-related news
 
 ## Model
 I fine-tuned the open-source pre-trained Mistral 7b model for this project using QLoRA fine-tuning. But to do this, I first had to convert the cleaned data into intruction/input/output triplets. I did this by using GPT 3.5's API and running it through a series of possible summarization queries resulting in over 10,000 triplets ready for fine-tuning. To include RAG implementation, the article's content was embedded and stored in ChromaDB. I then went ahead with fine-tuning. Running the fine-tuning script on my local machine was inefficient and too weak, so I ran it remotely through a Colab notebook: 
-https://colab.research.google.com/drive/17erg1mjtlQJcdwdLsXC40hmgMBpyT66e?usp=sharing
+https://colab.research.google.com/drive/17erg1mjtlQJcdwdLsXC40hmgMBpyT66e?usp=sharing.
 I can now use the ChromaDB vector + fine-tuned Mistral 7b to query with RAG for better results.
 
-## Contact/About Me
-* **Your Name:** Arya Maran
+## Contact
+* **Arya Maran**
 * **LinkedIn:** https://www.linkedin.com/in/arya-maran
 * **Email:** maran0@purdue.edu
