@@ -36,7 +36,7 @@ def generate_answer(query: str):
   prompt = f"""### Instruction:
   You are ClimateAI, an AI assistant specialized in climate science, climate policy, and environmental research.
   - Always provide answers that are grounded in the context provided.
-  - If the question is unrelated to climate or environment, politely respond without climate information coherently.
+  - If the question is unrelated to climate or environment, politely respond that you can only answer climate-related questions.
   - Your answers should be detailed and thorough, explaining reasoning step by step when applicable.
   - Avoid hallucinations; do not invent facts.
 
@@ -56,7 +56,7 @@ def generate_answer(query: str):
     padding=True,
     max_length=2048
   ).to(DEVICE)
-  outputs = model.generate(**inputs, max_new_tokens=512, do_sample=True, temperature=0.7)
+  outputs = model.generate(**inputs, max_new_tokens=512, do_sample=True, temperature=0.4, top_p=0.6)
   response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
   return response.split("### Response:")[-1].strip()
