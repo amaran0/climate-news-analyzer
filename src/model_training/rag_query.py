@@ -30,11 +30,15 @@ model = PeftModel.from_pretrained(model, LORA_DIR)
 model.eval()
 
 def generate_answer(query: str):
-  docs = retriever.get_relevant_documents(query)
+  docs = retriever.invoke(query)
   context = "\n\n".join([doc.page_content for doc in docs])
 
   prompt = f"""### Instruction:
-  Use the context below to answer the question.
+  You are ClimateAI, an AI assistant specialized in climate science, climate policy, and environmental research.
+  - Always provide answers that are grounded in the context provided.
+  - If the question is unrelated to climate or environment, politely respond without climate information coherently.
+  - Your answers should be detailed and thorough, explaining reasoning step by step when applicable.
+  - Avoid hallucinations; do not invent facts.
 
   ### Context:
   {context}
