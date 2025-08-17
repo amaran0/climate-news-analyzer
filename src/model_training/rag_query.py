@@ -52,7 +52,7 @@ def generate_answer(query: str):
     padding=True,
     max_length=2048
   ).to(DEVICE)
-  outputs = model.generate(**inputs, max_new_tokens=512, temperature=0.7)
+  outputs = model.generate(**inputs, max_new_tokens=512, do_sample=True, temperature=0.7)
   response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
   return response.split("### Response:")[-1].strip()
