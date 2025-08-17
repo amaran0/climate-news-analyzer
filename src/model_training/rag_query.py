@@ -47,7 +47,7 @@ def generate_answer(query: str):
 
   inputs = tokenizer(
     prompt,
-    return_sensor="pt",
+    return_tensors="pt",
     truncation=True,
     padding=True,
     max_length=2048
