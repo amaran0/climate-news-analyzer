@@ -37,8 +37,7 @@ def generate_answer(query: str):
     return "Hello! I am ClimateAI, an expert in climate science. Please ask a climate-related question."
   
   docs = retriever.invoke(query)
-  if not docs:
-    context = "None"
+  context = ""
   for i, doc in enumerate(docs, 1):
     url = doc.metadata.get("source", "Unknown source")
     context += f"[Source {i}] {url}\n{doc.page_content}\n\n"
