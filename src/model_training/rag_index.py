@@ -17,8 +17,12 @@ def load_articles():
       articles = json.load(f)
     for article in articles:
       content = article.get("content", "")
-      if content.strip():
-        docs.append(Document(page_content=content))
+      url = article.get("url", "Unknown url")
+      title = article.get("title", "Unknown title")
+      date = article.get("date", "Unknown date")
+      docs.append(
+        Document(page_content=content, metadata={"url": url, "title": title, "date": date})
+      )
   return docs
 
 print("Loading articles...")
