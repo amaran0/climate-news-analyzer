@@ -30,6 +30,7 @@ model = PeftModel.from_pretrained(model, LORA_DIR)
 model.eval()
 
 def generate_answer(query: str):
+  OFF_TOPIC_KEYWORDS = ["hello", "hi", "how are you", "good morning", "thank you"]
   retriever_runnable = retriever
   retriever_runnable = retriever_runnable.with_retry(stop_after_attempt=1)
   
@@ -39,7 +40,7 @@ def generate_answer(query: str):
   prompt = f"""### Instruction:
   You are ClimateAI, an AI assistant specialized in climate science, climate policy, and environmental research.
   - Always provide answers that are grounded in the context provided.
-  - If the question is unrelated to climate or environment, politely respond that you can only answer climate-related questions.
+  - If the question is unrelated to climate or environment, politely respond that you can only answer climate-related questions, then end your answer.
   - Your answers should be detailed and thorough, explaining reasoning step by step when applicable.
   - Avoid hallucinations; do not invent facts.
 
