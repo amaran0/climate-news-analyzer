@@ -39,11 +39,14 @@ def generate_answer(query: str):
   docs = retriever.invoke(query)
   if not docs:
     context = "None"
-  context = "\n\n".join([doc.page_content for doc in docs])
+  for i, doc in enumerate(docs, 1):
+    url = doc.metadata.get("source", "Unknown source")
+    context += f"[Source {i}] {url}\n{doc.page_content}\n\n"
 
   prompt = f"""### Instruction:
   You are ClimateAI, an AI assistant specialized in climate science, climate policy, and environmental research.
   - Always provide answers that are grounded in the context provided.
+  - When referencing facts, cite the sources using the [Source #] notation provided.
   - If the question is unrelated to climate or environment, politely respond that you can only answer climate-related questions, then end your answer.
   - Your answers should be detailed and thorough, explaining reasoning step by step when applicable.
   - Avoid hallucinations; do not invent facts.
@@ -64,7 +67,7 @@ def generate_answer(query: str):
     padding=True,
     max_length=2048
   ).to(DEVICE)
-  
+
   outputs = model.generate(
     **inputs,
     max_new_tokens=512,
