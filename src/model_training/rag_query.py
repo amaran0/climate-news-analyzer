@@ -16,6 +16,7 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 embedding_fn = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
 vectordb = Chroma(persist_directory=CHROMA_DIR, embedding_function=embedding_fn)
 retriever = vectordb.as_retriever(search_kwargs={"k": 3})
+retriever = retriever.with_retry(stop_after_attempt=1)
 
 #load fine-tuned model
 tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL, trust_remote_code=True)
@@ -29,12 +30,15 @@ model = AutoModelForCausalLM.from_pretrained(
 model = PeftModel.from_pretrained(model, LORA_DIR)
 model.eval()
 
+OFF_TOPIC_KEYWORDS = ["hello", "hi", "how are you", "good morning", "thank you"]
+
 def generate_answer(query: str):
-  OFF_TOPIC_KEYWORDS = ["hello", "hi", "how are you", "good morning", "thank you"]
-  retriever_runnable = retriever
-  retriever_runnable = retriever_runnable.with_retry(stop_after_attempt=1)
+  if any(word in query.lower() for word in OFF_TOPIC_KEYWORDS):
+    return "Hello! I am ClimateAI, an expert in climate science. Please ask a climate-related question."
   
-  docs = retriever_runnable.invoke(query)
+  docs = retriever.invoke(query)
+  if not docs:
+    context = "None"
   context = "\n\n".join([doc.page_content for doc in docs])
 
   prompt = f"""### Instruction:
@@ -60,6 +64,7 @@ def generate_answer(query: str):
     padding=True,
     max_length=2048
   ).to(DEVICE)
+  
   outputs = model.generate(
     **inputs,
     max_new_tokens=512,
