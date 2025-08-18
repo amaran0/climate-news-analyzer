@@ -1,6 +1,7 @@
 import os
 from langchain.vectorstores import Chroma
 from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.runnables import Runnable, RunnableConfig
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel
 import torch
@@ -30,7 +31,10 @@ model = PeftModel.from_pretrained(model, LORA_DIR)
 model.eval()
 
 def generate_answer(query: str):
-  docs = retriever.invoke(query)
+  retriever_runnable = retriever
+  retriever_runnable = retriever_runnable.with_retry(stop_after_attempt=1)
+  
+  docs = retriever_runnable.invoke(query)
   context = "\n\n".join([doc.page_content for doc in docs])
 
   prompt = f"""### Instruction:
@@ -56,7 +60,14 @@ def generate_answer(query: str):
     padding=True,
     max_length=2048
   ).to(DEVICE)
-  outputs = model.generate(**inputs, max_new_tokens=512, do_sample=True, temperature=0.4, top_p=0.6)
+  outputs = model.generate(
+    **inputs,
+    max_new_tokens=512,
+    do_sample=True,
+    temperature=0.4,
+    top_p=0.6,
+    pad_token_id=tokenizer.eos_token_id
+  )
   response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
   return response.split("### Response:")[-1].strip()
@@ -67,7 +78,7 @@ while True:
     query = input("You > ").strip()
     if not query:
       continue
-    print("ClimateAI: Thinking...\n")
+    print("ClimateAI > Thinking...\n")
     print(generate_answer(query))
     print()
   except KeyboardInterrupt:
