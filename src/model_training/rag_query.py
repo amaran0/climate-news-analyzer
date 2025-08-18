@@ -74,8 +74,12 @@ def generate_answer(query: str):
     top_p=0.6,
     pad_token_id=tokenizer.eos_token_id
   )
-  response = tokenizer.decode(outputs[0], skip_special_tokens=True)
-  response.split("### Response:")[-1].strip()
+  full_response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+  if "### Response:" in full_response:
+    response = full_response.split("### Response:")[-1].strip()
+  else:
+    response = full_response.strip()
 
   sources = []
   for doc in docs:
