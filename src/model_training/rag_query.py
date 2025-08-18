@@ -76,8 +76,18 @@ def generate_answer(query: str):
     pad_token_id=tokenizer.eos_token_id
   )
   response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+  response.split("### Response:")[-1].strip()
 
-  return response.split("### Response:")[-1].strip()
+  sources = []
+  for doc in docs:
+    meta = doc.metadata
+    src = meta.get("url") or meta.get("source") or "unknown"
+    title = meta.get("title", "")
+    if title and title != "unknown":
+      src = f"{title} ({src})"
+      sources.append(src)
+
+    return response, list(set(sources))
 
 print("RAG query ready. Ask a question:")
 while True:
@@ -86,7 +96,12 @@ while True:
     if not query:
       continue
     print("ClimateAI > Thinking...\n")
-    print(generate_answer(query))
+    answer, sources = generate_answer(query)
+    print(answer)
+    if sources:
+      print("\nSources:")
+      for s in sources:
+        print(f"- {s}")
     print()
   except KeyboardInterrupt:
     print("\nExiting.")
