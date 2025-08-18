@@ -39,7 +39,7 @@ def generate_answer(query: str):
   docs = retriever.invoke(query)
   context = ""
   for i, doc in enumerate(docs, 1):
-    url = doc.metadata["url"] if doc.metadata["url"] else "Unknown source"
+    url = doc.metadata.get("url") if doc.metadata.get("url") else "Unknown source"
     context += f"[Source {i}] {url}\n{doc.page_content}\n\n"
 
   prompt = f"""### Instruction:
