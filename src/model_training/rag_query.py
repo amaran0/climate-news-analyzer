@@ -1,7 +1,6 @@
 import os
 from langchain.vectorstores import Chroma
 from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.runnables import Runnable, RunnableConfig
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel
 import torch
