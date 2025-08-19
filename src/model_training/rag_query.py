@@ -91,7 +91,7 @@ def generate_answer(query: str):
       src = f"{title} ({src})"
       sources.append(src)
 
-    return response, list(set(sources))
+  return response, list(set(sources))
 
 print("RAG query ready. Ask a question:")
 while True:
