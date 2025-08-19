@@ -34,7 +34,7 @@ OFF_TOPIC_KEYWORDS = ["hello", "hi", "how are you", "good morning", "thank you"]
 
 def generate_answer(query: str):
   if any(word in query.lower() for word in OFF_TOPIC_KEYWORDS):
-    return "Hello! I am ClimateAI, an expert in climate science. Please ask a climate-related question."
+    return "Hello! I am ClimateAI, an expert in climate science. Please ask a climate-related question.", []
   
   docs = retriever.invoke(query)
   context = ""
