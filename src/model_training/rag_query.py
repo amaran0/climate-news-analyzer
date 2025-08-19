@@ -1,4 +1,4 @@
-import os
+import os, re
 from langchain.vectorstores import Chroma
 from langchain.embeddings import HuggingFaceEmbeddings
 from transformers import AutoTokenizer, AutoModelForCausalLM
@@ -39,13 +39,12 @@ def generate_answer(query: str):
   docs = retriever.invoke(query)
   context = ""
   for i, doc in enumerate(docs, 1):
-    url = doc.metadata.get("url") if doc.metadata.get("url") else "Unknown source"
-    context += f"[Source {i}] {url}\n{doc.page_content}\n\n"
+    context += f"{doc.page_content}\n\n"
 
   prompt = f"""### Instruction:
   You are ClimateAI, an AI assistant specialized in climate science, climate policy, and environmental research.
   - Always provide answers that are grounded in the context provided.
-  - Do not include citations, numbers, or references to [Source #] or URLs in your answer -- I added it myself.
+  - Do not include citations, numbers, or references or URLs in your answer -- I added it myself.
   - If the question is unrelated to climate or environment, politely respond that you can only answer climate-related questions, then end your answer.
   - Your answers should be detailed and thorough, explaining reasoning step by step when applicable.
   - Avoid hallucinations; do not invent facts.
@@ -81,6 +80,9 @@ def generate_answer(query: str):
     response = full_response.split("### Response:")[-1].strip()
   else:
     response = full_response.strip()
+
+  response = re.sub(r"\[Source\s*\d+\][^\n]*\n?", "", response)
+  response = re.sub(r"\s+", " ", response).strip()
 
   sources = []
   for doc in docs:
