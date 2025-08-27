@@ -13,7 +13,7 @@ def evaluate(models, dataset, tokenizer):
   results = {name: {"rouge1": [], "rougeL": [], "cosine": [], "latency": []} for name in models.keys()}
   
   for example in tqdm(dataset, desc="Evaluating"):
-    instr, inp, out = example["Instruction"], example["input"], example["output"]
+    instr, inp, out = example["instruction"], example["input"], example["output"]
     
     for name, model in model.items():
       import time
