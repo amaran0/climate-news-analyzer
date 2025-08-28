@@ -15,7 +15,7 @@ def evaluate(models, dataset, tokenizer):
   for example in tqdm(dataset, desc="Evaluating"):
     instr, inp, out = example["instruction"], example["input"], example["output"]
     
-    for name, model in model.items():
+    for name, model in models.items():
       import time
       start = time.time()
       pred = generate_answer(model, tokenizer, instr, inp)
