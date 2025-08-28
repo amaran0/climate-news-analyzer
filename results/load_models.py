@@ -28,6 +28,7 @@ def generate_answer(model, tokenizer, instruction, inp, max_new_tokens=256):
     output_ids = model.generate(
       **inputs,
       max_new_tokens = max_new_tokens,
+      do_sample=False,
       temperature=0.7,
       top_p=0.9
     )
