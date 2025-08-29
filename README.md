@@ -34,7 +34,21 @@ https://colab.research.google.com/drive/17erg1mjtlQJcdwdLsXC40hmgMBpyT66e?usp=sh
 I can now use the ChromaDB vector + fine-tuned Mistral 7b to query with RAG for better results.
 
 ## Results/Evaluation
-This is where things got messy. When fine-tuning, it's typical to make a 80/10/10 split for training/evaluation/testing respectively. When creating my training and evaluation dataset, which both gets used during training for hyperparameter tweaking, monitoring training progress, and metric reporting, it turns out the 20% for eval/testing i had saved for later is what i actually used as my evaluation dataset. TLDR; I fine-tuned my model on 100% of my training data, so overfitting is possible. I don't have the resources to re-train from scratch, so I used gpt's API and selected 500 random examples from my training dataset to test my model on. This code is in test_dataset_creation.py under the model_training folder. I understand that benchmarking is now a 'bit' skewed, nonetheless progress has to be made somehow.
+This is where things got messy. When fine-tuning, it's typical to make a 80/10/10 split for training/evaluation/testing respectively. When creating my training and evaluation dataset, which both gets used during training for hyperparameter tweaking, monitoring training progress, and metric reporting, it turns out the 20% for eval/testing i had saved for later is what i actually used as my evaluation dataset. TLDR; I fine-tuned my model on 100% of my training data, so overfitting is possible. I don't have the resources to re-train from scratch, so I used gpt's API and selected 500 random examples from my training dataset to test my model on. This code is in test_dataset_creation.py under the model_training folder. I understand that benchmarking is now a 'bit' skewed, nonetheless progress had to be made somehow.
+
+## Final Benchmarks
+The final benchmarks can be found in results/eval_results.txt. Firstly, I'll explain what the 4 metrics represent:<br>
+rouge1: Higher score means the model is using more of the same vocabulary as the ground truth answers<br>
+rougeL: Higher score means the model is producing longer chunks of text that match the reference structure/order<br>
+cosine: Refers to the semantic similarity between the model's answers and that of the ground truth<br>
+latency: refers to the speed at which the model responds.
+
+My model outperformed the base Mistral7b model in all metrics except latency.
+
+rouge1: +16.6%
+rougeL: +13.3%
+cosine: +3.2%
+latency: -38.3%
 
 ## Contact
 * **Arya Maran**
