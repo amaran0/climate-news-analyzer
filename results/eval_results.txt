@@ -1,0 +1,12 @@
+Model: base
+   rouge1: 0.3332
+   rougeL: 0.2530
+   cosine: 0.8360
+   latency: 7.4271
+
+Model: fine-tuned
+   rouge1: 0.3886
+   rougeL: 0.2865
+   cosine: 0.8625
+   latency: 10.2772
+
