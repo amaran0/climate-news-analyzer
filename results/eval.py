@@ -42,3 +42,6 @@ with open("./src/testing_dataset/test_dataset_600.json") as f:
   
 models = {"base": base_model, "fine-tuned": ft_model}
 results = evaluate(models, dataset, tokenizer)
+
+with open("results/eval_results.json", "w") as f:
+  json.dump(results, f, indent=2)
