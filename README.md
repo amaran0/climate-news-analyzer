@@ -1,8 +1,8 @@
 # AI-Powered Climate News & Adaptation Insights
 
-## Build Status: BUILDING
+## Build Status: COMPLETE
 ## Overview
-This project addresses the critical issue of climate change, aiming to enhance public understanding of both prominent and lesser-known environmental challenges. Recognizing the current overload of climate-related information, my goal is to develop a platform that condenses and presents this data in an accessible and engaging manner. This resource will be freely available, so as to allow replication/use for everyone.
+This project addresses the critical issue of climate change, aiming to enhance public understanding of both prominent and lesser-known environmental challenges. Recognizing the current overload of climate-related information, my goal is to develop a platform that condenses and presents this data in an accessible and engaging manner. This codebase will be freely available, so as to allow replication/use for everyone.
 
 ## Features
 This LLM-powered system is designed to perform the following key functions:
@@ -54,3 +54,4 @@ latency: -38.3%
 * **Arya Maran**
 * **LinkedIn:** https://www.linkedin.com/in/arya-maran
 * **Email:** maran0@purdue.edu
+* **Website:** www.aryamaran.com
