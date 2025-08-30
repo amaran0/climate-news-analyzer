@@ -50,6 +50,9 @@ rougeL: +13.3%
 cosine: +3.2%
 latency: -38.3%
 
+## Replication
+To replicate and use this model on Google Colab, I created an example notebook with the necessary dependencies and code cells. This allows for an interactive way to communicate with the model. Link here: https://colab.research.google.com/drive/1fz0hEHmT9iQ8ni134TXZm7-PPflhVxju?usp=sharing
+
 ## Contact
 * **Arya Maran**
 * **LinkedIn:** https://www.linkedin.com/in/arya-maran
